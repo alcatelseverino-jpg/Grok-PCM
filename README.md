@@ -1,58 +1,46 @@
 # Grok-PCM
 
-**Gestor de Registros de Manutenção** — aplicativo mobile-first para técnicos lançarem a folha do dia de forma rápida, segura e inteligente.
+**Gestor de Registros de Manutenção** — app mobile-first para técnicos lançarem a folha do dia.
 
-## Visão
+## Status atual: **Versão 1**
 
-Substituir o registro em papel e planilhas por um fluxo moderno:
+| Etapa | Status |
+|-------|--------|
+| MVP | ✅ Concluído |
+| **Versão 1** | ✅ Concluído |
+| Versão 2 | Planejada |
 
-- Folha do Dia com linha do tempo visual
-- Detecção de conflitos de horário
-- Rascunhos automáticos + modo offline
-- (Futuro) Leitura de folha por foto + IA
-- (Futuro) Agente de IA para ajudar o técnico
+## O que tem na Versão 1
 
-## Etapas de desenvolvimento
-
-| Etapa | Status | Foco principal |
-|-------|--------|----------------|
-| **MVP** | Em desenvolvimento | Folha do Dia confiável + offline + Meus Registros |
-| **Versão 1** | Planejada | Foto + OCR, arrastar na timeline, agente IA básico |
-| **Versão 2** | Planejada | IA avançada + painéis de gestão |
-
-## MVP — O que está incluído
-
-- Tema escuro mobile-first (inspirado no RG Manutenção)
-- Seleção de técnico e data
-- Intervalo opcional com desconto automático
-- Linhas de manutenção (equipamento + horário + descrição)
+### Já no MVP
+- Tema escuro mobile-first
+- Folha do Dia (técnico, data, intervalo)
 - Linha do tempo visual 00h–24h
-- Detecção de sobreposição de horários
-- Rascunhos salvos automaticamente (localStorage)
-- Funcionamento offline básico
-- Tela **Meus Registros** (últimos 30 dias)
-- Interface 100% em português do Brasil
+- Detecção de conflitos de horário
+- Rascunhos + localStorage
+- Meus Registros com busca e filtro
 
-## Como rodar
+### Novo na Versão 1
+- **📷 Ler folha por foto** — abre câmera/galeria, processa com IA (simulada) e importa linhas com confirmação
+- **✦ Agente de IA** — botão flutuante com chat (horas, conflitos, equipamentos, sugestões de descrição)
+- **Exportar PDF** da folha do dia
+- Remover linhas com um toque
+- Clique na barra da timeline para editar
 
-Abra o arquivo `index.html` diretamente no navegador ou sirva com qualquer servidor estático.
+## Como testar
 
-```bash
-# Exemplo simples
-npx serve .
-```
+1. Abra: https://github.com/alcatelseverino-jpg/Grok-PCM/blob/main/index.html  
+2. Ou baixe o `index.html` e abra no navegador (melhor no celular).
+3. Entre com um nome (ex: Douglas).
+4. Teste: + Linha, foto, agente IA (botão ✦), Gravar dia, Meus Registros.
 
-## Stack
+## Próximo: Versão 2
 
-- HTML + CSS + JavaScript vanilla
-- LocalStorage / IndexedDB (offline)
-- Preparado para integração futura com Supabase
-
-## Roadmap resumido
-
-1. **MVP** ← estamos aqui
-2. Versão 1 — OCR por foto + IA + voz
-3. Versão 2 — Gestão avançada + inteligência proativa
+- OCR real com modelo de visão
+- Arrastar blocos na linha do tempo
+- Painéis de gestão (aderência, padrões)
+- Sincronização com Supabase
+- Modo offline mais robusto
 
 ---
 
