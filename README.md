@@ -1,31 +1,39 @@
 # Grok-PCM
 
-Painel de manutenção **tema escuro**, no estilo do GestorPCM / pcm-maintenance.
+**Clone completo do pcm-maintenance em tema escuro.**
 
-## Login
+## O que inclui (igual ao GestorPCM / pcm-maintenance)
 
-- E-mail + senha (mesmo **Supabase Auth** do GestorPCM)
-- URL: `https://zvaexuejxhjuckllwpqk.supabase.co`
+- Login e-mail + senha (Supabase Auth)
+- **Ordens de serviço** — lista, detalhe, registros, abrir OS, imprimir PDF, exportar Excel
+- **Calendário preventivo** — vencidos / próximos / em dia
+- **Grupos e equipamentos** — CRUD (admin)
+- **Indicadores** — produtividade, MTTR/MTBF, relatório
+- **Gestão** — OS fora do prazo, aderência, paradas
+- **Equipe e calendário** — regime, feriados, ausências
+- **Folhas de papel** — gerar e controlar folhas numeradas
+- **Ler folha por foto** — OCR / importação
+- **Não conformidades** — checklist Não OK
+- **Atualizar** e **Sair**
 
-## Menus no topo
+## Arquivos
 
-| Menu | Função |
-|------|--------|
-| **Folha do Dia** | Registro diário, linha do tempo, foto+IA, agente IA |
-| **Ordens de serviço** | Lista OS do Supabase |
-| **Calendário** | Preventivas (vencidos / próximos) |
-| **Equipamentos** | Grupos e equipamentos |
-| **Indicadores** | Resumo de OS |
-| **Meus Registros** | Histórico local da folha |
+| Arquivo | Função |
+|---------|--------|
+| `index.html` | Interface (HTML) |
+| `styles.css` | Tema escuro |
+| `app1.js` … `app4.js` | Lógica completa (mesmo JS do pcm-maintenance) |
 
-Botões **↻ Atualizar** e **Sair** no canto direito do topo.
+## Como usar
 
-## Como abrir
+1. Abra o repositório no GitHub Pages **ou** baixe os arquivos e sirva com um servidor local:
+   ```bash
+   npx serve .
+   ```
+2. Entre com o **mesmo e-mail e senha** do GestorPCM.
 
-Abra o `index.html` do repositório no navegador (ou sirva com `npx serve`).
+## Tema
 
-## Stack
+Fundo `#0b1220`, cards escuros, destaque amarelo (`#f59e0b`), badges adaptados ao dark mode.
 
-- HTML/CSS/JS + Supabase JS v2
-- Folha do Dia com rascunhos em localStorage
-- Dados de OS/equipamentos/calendário vindos do Supabase
+Base: [pcm-maintenance](https://github.com/alcatelseverino-jpg/pcm-maintenance).
