@@ -8,7 +8,6 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
 <div id="login">
   <form class="lcard" id="loginForm">
     <h1>Grok-PCM</h1>
@@ -22,25 +21,23 @@
     <p class="muted" style="font-size:12px;margin:12px 0 0">Use o mesmo usuário (e-mail e senha) do Supabase Auth que já usa no GestorPCM.</p>
   </form>
 </div>
-
 <div id="app" hidden>
   <header class="top">
     <h1>⚙ Grok-PCM <small>Painel de Manutenção</small></h1>
     <span class="sp"></span>
     <span id="busy" hidden>Carregando…</span>
     <span class="chip" id="userChip"></span>
-    <button class="btn" id="btnGestao" type="button" title="OS fora do prazo, aderência preventiva, maiores paradas e qualidade dos registros">📋 Gestão</button>
-    <button class="btn" id="btnEquipe" type="button" title="Regime dos técnicos, feriados e ausências">👥 Equipe e calendário</button>
-    <button class="btn" id="btnFolhasPapel" type="button" title="Gerar e controlar as folhas de registro numeradas">📄 Folhas</button>
-    <button class="btn" id="btnFolha" type="button" title="Fotografar a folha de registro e ler as linhas">📷 Ler folha por foto</button>
-    <button class="btn" id="btnNC" type="button" title="Itens do checklist marcados como Não OK">⚠ Não conformidades<span class="ncn" id="ncN" hidden></span></button>
+    <button class="btn" id="btnGestao" type="button">📋 Gestão</button>
+    <button class="btn" id="btnEquipe" type="button">👥 Equipe e calendário</button>
+    <button class="btn" id="btnFolhasPapel" type="button">📄 Folhas</button>
+    <button class="btn" id="btnFolha" type="button">📷 Ler folha por foto</button>
+    <button class="btn" id="btnNC" type="button">⚠ Não conformidades<span class="ncn" id="ncN" hidden></span></button>
     <button class="btn" id="btnReload" type="button">↻ Atualizar</button>
     <button class="btn" id="btnOut" type="button">Sair</button>
   </header>
-
   <main class="grid">
     <section class="panel" id="p-os">
-      <div class="ph"><h2>Ordens de serviço</h2><span class="sp"></span><button class="btn" id="btnPrintSel" type="button" hidden>🖨 Imprimir</button><button class="btn" id="btnOSExp" type="button" title="Exporta a lista atual para Excel (CSV)">⬇ Excel</button><span class="muted" id="osCount"></span></div>
+      <div class="ph"><h2>Ordens de serviço</h2><span class="sp"></span><button class="btn" id="btnPrintSel" type="button" hidden>🖨 Imprimir</button><button class="btn" id="btnOSExp" type="button">⬇ Excel</button><span class="muted" id="osCount"></span></div>
       <div class="sub">
         <input type="search" id="osQ" placeholder="Buscar nº, equipamento, técnico…">
         <select id="osSt">
@@ -52,42 +49,26 @@
         </select>
       </div>
       <div class="sub">
-        <label>Período
-          <select id="osMode">
-            <option value="semana">Semana</option><option value="dia">Dia</option>
-            <option value="mes">Mês</option><option value="tudo">Todo o período</option>
-          </select>
-        </label>
-        <button class="btn" id="osPrev" type="button" title="Período anterior">‹</button>
+        <label>Período<select id="osMode"><option value="semana">Semana</option><option value="dia">Dia</option><option value="mes">Mês</option><option value="tudo">Todo o período</option></select></label>
+        <button class="btn" id="osPrev" type="button">‹</button>
         <input type="date" id="osRef">
-        <button class="btn" id="osNext" type="button" title="Próximo período">›</button>
+        <button class="btn" id="osNext" type="button">›</button>
         <button class="btn" id="osToday" type="button">Hoje</button>
         <b id="osPerLbl" style="font-size:12px"></b>
         <label>Grupo <select id="osGrp"></select></label>
       </div>
       <div class="split">
         <div class="half">
-          <div class="halfh">Ordens de serviço <span class="muted" style="font-weight:400">· passe o cursor sobre uma OS</span></div>
-          <div class="pb">
-            <table>
-              <thead><tr><th class="nox pcell"><input type="checkbox" id="osAll" title="Marcar todas as OS da lista"></th><th>Nº</th><th>Equip.</th><th>Técnico</th><th>Status</th><th class="nox"></th></tr></thead>
-              <tbody id="osBody"></tbody>
-            </table>
-          </div>
+          <div class="halfh">Ordens de serviço</div>
+          <div class="pb"><table><thead><tr><th class="nox pcell"><input type="checkbox" id="osAll"></th><th>Nº</th><th>Equip.</th><th>Técnico</th><th>Status</th><th class="nox"></th></tr></thead><tbody id="osBody"></tbody></table></div>
         </div>
         <div class="half">
           <div class="halfh" id="regTitle">Registros de manutenção</div>
-          <div class="pb">
-            <table class="regt">
-              <thead><tr><th>Data</th><th>Técnico</th><th>Equip.</th><th>Tipo</th><th>Descrição</th><th class="num">Tempo</th><th class="num">Tempo grupo</th></tr></thead>
-              <tbody id="regBody"></tbody>
-            </table>
-          </div>
+          <div class="pb"><table class="regt"><thead><tr><th>Data</th><th>Técnico</th><th>Equip.</th><th>Tipo</th><th>Descrição</th><th class="num">Tempo</th><th class="num">Tempo grupo</th></tr></thead><tbody id="regBody"></tbody></table></div>
         </div>
       </div>
       <div class="pf"><button class="btn pri blk" id="btnNewOS" type="button">＋ Abrir nova ordem de serviço</button></div>
     </section>
-
     <section class="panel" id="p-cal">
       <div class="ph"><h2>Calendário de manutenção preventiva</h2>
         <div class="legend">
@@ -113,14 +94,13 @@
           <button class="btn" id="calNext" type="button">›</button>
           <button class="btn" id="calToday" type="button">Hoje</button>
           <input type="month" id="calMonth">
-          <button class="btn" id="calOld" type="button" title="Ir ao vencimento mais antigo ainda em atraso">⚠ Vencido mais antigo</button>
+          <button class="btn" id="calOld" type="button">⚠ Vencido mais antigo</button>
         </div>
         <div class="dow"><div>Dom</div><div>Seg</div><div>Ter</div><div>Qua</div><div>Qui</div><div>Sex</div><div>Sáb</div></div>
         <div class="days" id="calDays"></div>
         <div class="detail" id="calDetail"><span class="muted">Clique em um dia para ver os equipamentos.</span></div>
       </div>
     </section>
-
     <section class="right">
       <div class="panel" id="p-grp">
         <div class="ph"><h2>Grupos e equipamentos</h2>
@@ -129,19 +109,12 @@
         </div>
         <div class="sub"><input type="search" id="grpQ" placeholder="Buscar grupo…"></div>
         <div class="pb">
-          <div id="admNote" class="warn" hidden>Somente administradores podem editar grupos e equipamentos. Você está em modo leitura.</div>
-          <table>
-            <thead><tr><th>Grupo</th><th>Cód.</th><th class="num">Equip.</th><th class="num">Dias</th><th class="num">Check.</th><th></th></tr></thead>
-            <tbody id="grpBody"></tbody>
-          </table>
+          <div id="admNote" class="warn" hidden>Somente administradores podem editar.</div>
+          <table><thead><tr><th>Grupo</th><th>Cód.</th><th class="num">Equip.</th><th class="num">Dias</th><th class="num">Check.</th><th></th></tr></thead><tbody id="grpBody"></tbody></table>
           <div class="sub" style="border-top:1px solid var(--line)"><b id="eqTitle">Equipamentos</b></div>
-          <table>
-            <thead><tr><th>Código</th><th>Nome</th><th>Status</th><th class="num">Dias</th><th></th></tr></thead>
-            <tbody id="eqBody"></tbody>
-          </table>
+          <table><thead><tr><th>Código</th><th>Nome</th><th>Status</th><th class="num">Dias</th><th></th></tr></thead><tbody id="eqBody"></tbody></table>
         </div>
       </div>
-
       <div class="panel" id="p-ind">
         <div class="ph"><h2>Indicadores</h2>
           <div class="tabs"><button class="on" data-tab="prod" type="button">Produtividade</button><button data-tab="mm" type="button">MTBF / MTTR</button></div>
@@ -156,11 +129,7 @@
             <button class="btn" id="btnPExp" type="button">⬇ Excel</button>
           </div>
           <div class="kpis" id="pKpis"></div>
-          <table>
-            <thead><tr><th>Técnico</th><th class="num">OS conc.</th><th class="num">Regist.</th><th class="num">Horas</th><th class="num">Horas prev.</th><th class="num">Horas corr.</th><th class="num">Horas disp.</th><th class="num">Produtividade %</th><th></th></tr></thead>
-            <tbody id="pBody"></tbody>
-          </table>
-          <div class="note">Horas = soma de (hora fim − hora início) dos registros no período.</div>
+          <table><thead><tr><th>Técnico</th><th class="num">OS conc.</th><th class="num">Regist.</th><th class="num">Horas</th><th class="num">Horas prev.</th><th class="num">Horas corr.</th><th class="num">Horas disp.</th><th class="num">Produtividade %</th><th></th></tr></thead><tbody id="pBody"></tbody></table>
           <div class="note" id="pNote"></div>
           <div id="pDist" style="overflow-x:auto;padding-bottom:8px"></div>
         </div>
@@ -172,29 +141,27 @@
             <label>Equip. <input type="search" id="mEq" placeholder="código ou nome"></label>
           </div>
           <div class="kpis" id="mKpis"></div>
-          <table>
-            <thead><tr><th>Equipamento</th><th class="num">Falhas</th><th class="num">MTTR (h)</th><th class="num">MTBF (dias)</th></tr></thead>
-            <tbody id="mBody"></tbody>
-          </table>
-          <div class="note">MTTR/MTBF sobre OS corretivas concluídas no período filtrado.</div>
+          <table><thead><tr><th>Equipamento</th><th class="num">Falhas</th><th class="num">MTTR (h)</th><th class="num">MTBF (dias)</th></tr></thead><tbody id="mBody"></tbody></table>
         </div>
       </div>
     </section>
   </main>
 </div>
-
 <dialog id="dlg">
   <div class="dh"><h3 id="dlgTitle"></h3><button type="button" id="dlgX" aria-label="Fechar">✕</button></div>
   <div class="db" id="dlgBody"></div>
   <div class="df" id="dlgFoot"></div>
 </dialog>
 <div id="toasts"></div>
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
-<script src="app1.js"></script>
-<script src="app2.js"></script>
-<script src="app3.js"></script>
-<script src="app4.js"></script>
+<script src="p1.js"></script>
+<script src="p2.js"></script>
+<script src="p3.js"></script>
+<script src="p4.js"></script>
+<script src="p5.js"></script>
+<script src="p6.js"></script>
+<script src="p7.js"></script>
+<script src="p8.js"></script>
 </body>
 </html>
